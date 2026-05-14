@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hasnat Ahmed Abbasi | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top left, #111827, #0f172a 45%, #020617 100%);
+      background-attachment: fixed;
+      color: white;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      width: 500px;
+      height: 500px;
+      background: #8b5cf6;
+      filter: blur(180px);
+      opacity: 0.25;
+      top: -100px;
+      left: -100px;
+      z-index: -1;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      width: 400px;
+      height: 400px;
+      background: #06b6d4;
+      filter: blur(180px);
+      opacity: 0.2;
+      bottom: -100px;
+      right: -100px;
+      z-index: -1;
+    }
+
+    nav {
+      width: 100%;
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(12px);
+      background: rgba(15, 23, 42, 0.75);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      background: linear-gradient(to right, #8b5cf6, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      transition: 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    nav ul li a:hover {
+      color: #06b6d4;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 80px 8%;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 300px;
+      animation: fadeUp 1s ease;
+    }
+
+    .hero-text span {
+      color: #06b6d4;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      margin-top: 15px;
+      line-height: 1.1;
+    }
+
+    .hero-text h2 {
+      margin-top: 12px;
+      font-size: 1.5rem;
+      color: #cbd5e1;
+      font-weight: 400;
+    }
+
+    .hero-text p {
+      margin-top: 24px;
+      color: #94a3b8;
+      line-height: 1.8;
+      max-width: 650px;
+      font-size: 1rem;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: 12px;
+      border: none;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.35s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #8b5cf6, #06b6d4);
+      color: white;
+      box-shadow: 0 10px 30px rgba(139,92,246,0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: white;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-5px);
+    }
+
+    .hero-image {
+      flex: 1;
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hero-image img {
+      transition: 0.5s ease;
+      width: 360px;
+      height: 360px;
+      object-fit: cover;
+      border-radius: 30px;
+      border: 4px solid rgba(255,255,255,0.08);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      filter: saturate(1.1);
+    }
+
+    section {
+      padding: 100px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      background: linear-gradient(to right, #ffffff, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-size: 2.7rem;
+      margin-bottom: 15px;
+    }
+
+    .section-title p {
+      color: #94a3b8;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.8;
+    }
+
+    .glass-card {
+      position: relative;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(14px);
+      border-radius: 24px;
+      padding: 35px;
+      transition: 0.35s ease;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      top: -60px;
+      right: -60px;
+      transition: 0.4s ease;
+    }
+
+    .glass-card:hover::before {
+      transform: scale(1.3);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .about-content p {
+      line-height: 1.9;
+      color: #cbd5e1;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .stat-box {
+      background: rgba(255,255,255,0.04);
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .stat-box h3 {
+      font-size: 2rem;
+      color: #06b6d4;
+    }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .timeline-item h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item h4 {
+      color: #06b6d4;
+      margin-bottom: 10px;
+    }
+
+    .timeline-item p {
+      color: #cbd5e1;
+      line-height: 1.8;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 25px;
+    }
+
+    .skill-card {
+      text-align: center;
+    }
+
+    .skill-card h3 {
+      margin-top: 15px;
+      font-size: 1.1rem;
+    }
+
+    .contact-container {
+      text-align: center;
+    }
+
+    .contact-info {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .contact-card a {
+      color: #06b6d4;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .experience-banner {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .banner-card {
+      padding: 35px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(139,92,246,0.15), rgba(6,182,212,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: 0.4s ease;
+      backdrop-filter: blur(12px);
+    }
+
+    .banner-card:hover {
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 25px 45px rgba(0,0,0,0.35);
+    }
+
+    .banner-card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .banner-card p {
+      color: #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .premium-divider {
+      width: 120px;
+      height: 5px;
+      margin: 18px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(to right, #8b5cf6, #06b6d4, #ec4899);
+    }
+
+    .hero-image img:hover {
+      transform: scale(1.05) rotate(-1deg);
+    }
+
+    .skill-card:hover {
+      background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(6,182,212,0.12));
+      transform: translateY(-12px);
+    }
+
+    nav ul li a::after {
+      content: "";
+      display: block;
+      width: 0;
+      height: 2px;
+      background: #06b6d4;
+      transition: 0.3s;
+      margin-top: 4px;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    footer {
+      text-align: center;
+      padding: 35px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #94a3b8;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(-15px);
+      }
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media(max-width: 900px) {
+      .hero-text h1 {
+        font-size: 2.8rem;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    .floating-circle {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(to right, #8b5cf6, #06b6d4);
+      border-radius: 50%;
+      filter: blur(20px);
+      opacity: 0.3;
+      top: 140px;
+      right: 180px;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-circle.two {
+      width: 80px;
+      height: 80px;
+      top: 450px;
+      right: 60px;
+      background: linear-gradient(to right, #ec4899, #8b5cf6);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#8b5cf6, #06b6d4);
+      border-radius: 10px;
+    }
+
+    @media(max-width: 600px) {
+      .hero-image img {
+        width: 280px;
+        height: 280px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      section {
+        padding: 80px 6%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Hasnat Abbasi</div>
+
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero" id="home">
+
+    <div class="hero-text">
+      <span>Project Delivery Manager</span>
+
+      <h1>Hasnat Ahmed Abbasi</h1>
+
+      <h2 id="typing-text"></h2>
+
+      <p>
+        Experienced operations and project delivery professional with a strong background in customer service, leadership, communication, and operational excellence. Passionate about improving workflows, managing teams, and delivering high-quality professional solutions.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#contact" class="btn btn-primary">Contact Me</a>
+
+        <a href="https://www.linkedin.com/in/hasnat-abbasi-2897a71a1/" target="_blank" class="btn btn-secondary">LinkedIn Profile</a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=687&auto=format&fit=crop" alt="Hasnat Ahmed Abbasi">
+    </div>
+
+    <div class="floating-circle"></div>
+    <div class="floating-circle two"></div>
+
+  </section>
+
+  <section id="about">
+
+    <div class="section-title">
+      <h2>About Me</h2>
+      <div class="premium-divider"></div>
+      <p>
+        Dedicated and results-driven professional with expertise in operations management, project delivery, and customer support.
+      </p>
+    </div>
+
+    <div class="about-content">
+
+      <div class="glass-card">
+        <p>
+          I am an experienced Project Delivery and Operations Professional currently working in Riyadh, Saudi Arabia. With years of professional experience in customer support, operations management, and project coordination, I focus on delivering efficient solutions, improving communication, and maintaining professional service standards.
+          <br><br>
+          My goal is to contribute to organizational success through leadership, teamwork, operational efficiency, and excellent customer experience.
+        </p>
+      </div>
+
+      <div class="stats">
+
+        <div class="stat-box glass-card">
+          <h3>5+</h3>
+          <p>Years Experience</p>
+        </div>
+
+        <div class="stat-box glass-card">
+          <h3>100%</h3>
+          <p>Professional Commitment</p>
+        </div>
+
+        <div class="stat-box glass-card">
+          <h3>4</h3>
+          <p>Professional Roles</p>
+        </div>
+
+        <div class="stat-box glass-card">
+          <h3>24/7</h3>
+          <p>Customer Focus</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="experience">
+
+    <div class="section-title">
+      <h2>Professional Experience</h2>
+      <div class="premium-divider"></div>
+      <p>
+        Professional journey across operations management, customer service, and project delivery.
+      </p>
+    </div>
+
+    <div class="timeline">
+
+      <div class="timeline-item glass-card">
+        <h3>Project Delivery Manager</h3>
+        <h4>ALRAJA COMPANY LTD | Nov 2022 – Present</h4>
+        <p>
+          Managing project delivery operations, workflow coordination, team communication, and operational processes while ensuring quality service and timely project execution in Riyadh, Saudi Arabia.
+        </p>
+      </div>
+
+      <div class="timeline-item glass-card">
+        <h3>Operations Manager</h3>
+        <h4>Rewokers | Mar 2022 – Oct 2022</h4>
+        <p>
+          Supervised operational activities, improved workflow efficiency, managed team coordination, and maintained operational reporting.
+        </p>
+      </div>
+
+      <div class="timeline-item glass-card">
+        <h3>Customer Support Representative</h3>
+        <h4>A2Z Soft | Apr 2021 – Feb 2022</h4>
+        <p>
+          Provided professional customer support services, handled customer inquiries, and maintained strong communication standards.
+        </p>
+      </div>
+
+      <div class="timeline-item glass-card">
+        <h3>Customer Service Representative</h3>
+        <h4>MTBC | Jul 2019 – Apr 2021</h4>
+        <p>
+          Assisted customers with professional support, managed service communication, and maintained customer satisfaction.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="skills">
+
+    <div class="section-title">
+      <h2>Professional Skills</h2>
+      <div class="premium-divider"></div>
+      <p>
+        Core strengths developed through years of operational and customer-focused experience.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+
+      <div class="skill-card glass-card">
+        <h3>Project Delivery</h3>
+      </div>
+
+      <div class="skill-card glass-card">
+        <h3>Operations Management</h3>
+      </div>
+
+      <div class="skill-card glass-card">
+        <h3>Customer Service</h3>
+      </div>
+
+      <div class="skill-card glass-card">
+        <h3>Customer Support</h3>
+      </div>
+
+      <div class="skill-card glass-card">
+        <h3>Leadership</h3>
+      </div>
+
+      <div class="skill-card glass-card">
+        <h3>Communication</h3>
+      </div>
+
+      <div class="skill-card glass-card">
+        <h3>Marketing</h3>
+      </div>
+
+      <div class="skill-card glass-card">
+        <h3>Team Coordination</h3>
+      </div>
+
+    </div>
+
+    <div class="experience-banner">
+
+      <div class="banner-card">
+        <h3>Leadership & Coordination</h3>
+        <p>
+          Experienced in managing operational teams, improving workflows, and maintaining efficient communication between departments.
+        </p>
+      </div>
+
+      <div class="banner-card">
+        <h3>Customer Experience</h3>
+        <p>
+          Dedicated to delivering high-quality customer service and building strong professional relationships.
+        </p>
+      </div>
+
+      <div class="banner-card">
+        <h3>Operational Excellence</h3>
+        <p>
+          Focused on improving efficiency, project delivery standards, and organizational productivity.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="contact">
+
+    <div class="section-title">
+      <h2>Contact</h2>
+      <div class="premium-divider"></div>
+      <p>
+        Feel free to connect for professional collaboration and opportunities.
+      </p>
+    </div>
+
+    <div class="contact-container">
+
+      <div class="contact-info">
+
+        <div class="contact-card glass-card">
+          <h3>Email</h3>
+          <br>
+          <a href="mailto:Hasnat.abbasi200@gmail.com">Hasnat.abbasi200@gmail.com</a>
+        </div>
+
+        <div class="contact-card glass-card">
+          <h3>LinkedIn</h3>
+          <br>
+          <a href="https://www.linkedin.com/in/hasnat-abbasi-2897a71a1/" target="_blank">
+            View LinkedIn Profile
+          </a>
+        </div>
+
+        <div class="contact-card glass-card">
+          <h3>Location</h3>
+          <br>
+          <p>Riyadh, Saudi Arabia</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <p>
+      © 2026 Hasnat Ahmed Abbasi | Project Delivery Manager
+    </p>
+    <script>
+    const titles = [
+      "Project Delivery Manager",
+      "Operations Specialist",
+      "Customer Service Professional"
+    ];
+
+    let index = 0;
+    let charIndex = 0;
+    const typingElement = document.getElementById('typing-text');
+
+    function typeEffect() {
+      if (!typingElement) return;
+
+      if (charIndex < titles[index].length) {
+        typingElement.textContent += titles[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 80);
+      } else {
+        setTimeout(eraseEffect, 1500);
+      }
+    }
+
+    function eraseEffect() {
+      if (charIndex > 0) {
+        typingElement.textContent = titles[index].substring(0, charIndex - 1);
+        charIndex--;
+        setTimeout(eraseEffect, 40);
+      } else {
+        index = (index + 1) % titles.length;
+        setTimeout(typeEffect, 300);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      typeEffect();
+    });
+  </script>
+
+</body>
+</html>
